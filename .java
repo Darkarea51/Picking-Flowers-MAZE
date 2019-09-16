@@ -8,11 +8,18 @@ method main()
       C.Safejump();
       C.checksys();
       C.pick();
-   
-         if(!C.isWater(AHEAD))
+   		
+     	if (C.isFacing(SOUTH) && !C.isWater(AHEAD) && !C.isWater(LEFT) && !C.isWater(RIGHT))
+     	 {
+          C.turn(RIGHT);
+          C.turn(RIGHT);
+          C.hop();
+     	 }
+         else if(!C.isWater(AHEAD))
          {
             C.checksys();
             C.turn(LEFT);
+           
             C.hop();
          }
      
@@ -27,6 +34,7 @@ method main()
            C.turn(RIGHT);
            C.hop();
      	 }
+     	 
      	 else if (C.isFacing(EAST) && C.isWater(AHEAD) && C.isWater(LEFT))
      	{
           C.turn(RIGHT);
@@ -79,7 +87,10 @@ method main()
 }
 
 
-Jeroo Methods 
+
+
+// Jeroo Methods 
+
 
 
 method Safejump()
@@ -155,4 +166,3 @@ method oneLine ()
      }
    }
 }
-
