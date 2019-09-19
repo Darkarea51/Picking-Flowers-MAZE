@@ -15,6 +15,11 @@ method main()
           C.turn(RIGHT);
           C.hop();
      	 }
+     	 else if(!C.isFacing(EAST) && !C.isWater(AHEAD) && !C.isWater(RIGHT) && !C.isWater(LEFT))
+     	 {
+       		C.turn(LEFT);
+           	C.hop();
+     	 }
          else if(!C.isWater(AHEAD))
          {
             C.checksys();
@@ -92,7 +97,6 @@ method main()
 // Jeroo Methods 
 
 
-
 method Safejump()
 {
    if (!isWater(AHEAD))
@@ -140,6 +144,12 @@ method oneLine ()
         turn(LEFT);
         hop();
         
+      }
+      else if(isFacing(SOUTH) && !isWater(AHEAD) && !isWater(LEFT) && !isWater(RIGHT))
+      {
+          turn(RIGHT);
+          turn(RIGHT);
+          hop();
       }
       else if(isWater(AHEAD) && isWater(LEFT))
       {
