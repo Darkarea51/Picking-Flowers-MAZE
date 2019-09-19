@@ -15,23 +15,19 @@ method main()
           C.turn(RIGHT);
           C.hop();
      	 }
-     	 else if(!C.isFacing(EAST) && !C.isWater(AHEAD) && !C.isWater(RIGHT) && !C.isWater(LEFT))
-     	 {
-       		C.turn(LEFT);
-           	C.hop();
-     	 }
-         else if(!C.isWater(AHEAD))
+       else if(!C.isWater(AHEAD))
          {
             C.checksys();
             C.turn(LEFT);
            
             C.hop();
          }
-     
-     	 else if(!C.isWater(LEFT))
+  
+         else if(!C.isWater(LEFT))
          {
             C.turn(LEFT);
             C.hop();
+         
          }
      	 else if(C.isFacing(EAST) && C.isWater(AHEAD) && C.isWater(LEFT) && C.isWater(RIGHT))
      	 {
@@ -93,8 +89,8 @@ method main()
 
 
 
+//Jeroo Methods
 
-// Jeroo Methods 
 
 
 method Safejump()
@@ -122,7 +118,6 @@ method checksys()
       turn(LEFT);
       hop();
   	}
-  	
 }
           
 method oneLine ()
@@ -131,12 +126,42 @@ method oneLine ()
    {
      
       checkFlower();
-      if (!isWater(AHEAD) && !isWater(RIGHT))
+      if(isFacing(SOUTH) && !isWater(AHEAD) && !isWater(LEFT) && !isWater(RIGHT))
       {
-         turn(RIGHT);
-     	 checksys();
+          turn(RIGHT);
+          turn(RIGHT);
+          hop();
+      }
+      else if (!isWater(LEFT))
+      {
+      
+         turn(LEFT);
          hop();
+      }
+      else if (!isWater(AHEAD) && !isWater(RIGHT))
+      {
+         //checksys();
+         turn(RIGHT);
+     	   checksys();
          
+         
+      }
+      else if(!isWater(LEFT))
+      {
+         turn(LEFT);
+         hop();
+      }
+      else if(isFacing(NORTH) && !isWater(LEFT) && !isWater(RIGHT))
+      {
+         turn(LEFT);
+         hop();
+      
+      }
+      else if(!isWater(LEFT))
+      {
+         turn(LEFT);
+         hop();
+      
       }
       else if(isWater(AHEAD))
       {
@@ -145,12 +170,13 @@ method oneLine ()
         hop();
         
       }
-      else if(isFacing(SOUTH) && !isWater(AHEAD) && !isWater(LEFT) && !isWater(RIGHT))
+      else if(!isWater(LEFT))
       {
-          turn(RIGHT);
-          turn(RIGHT);
-          hop();
+         turn(LEFT);
+         hop();
+      
       }
+      
       else if(isWater(AHEAD) && isWater(LEFT))
       {
         checksys();
@@ -161,15 +187,10 @@ method oneLine ()
       else if(!isWater(LEFT) && !isWater(RIGHT) && isWater(AHEAD))
      {
        turn(RIGHT);
+       turn(RIGHT);
        hop();
      }
-      else if(!isWater(LEFT))
-      {
-        checksys();
-        turn(LEFT);
-        Safejump();
-   
-      }
+     
       else if(!isWater(AHEAD))
      {
        hop();
